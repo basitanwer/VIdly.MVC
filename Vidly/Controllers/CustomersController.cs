@@ -21,6 +21,7 @@ namespace Vidly.Controllers
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
+            base.Dispose(disposing);
         }
 
         // GET: Customer
@@ -31,7 +32,7 @@ namespace Vidly.Controllers
 
         public ActionResult Details(int id, string Name)
         {
-            Customer customer = _context.Customers.SingleOrDefault<Customer>(c => c.Id == id);
+            Customer customer = _context.Customers.Include( c => c.MembershipType).SingleOrDefault<Customer>(c => c.Id == id);
 
             if (customer == null)
             {

@@ -13,14 +13,16 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Genre</th>
             </tr>
         </thead>
         <tbody>
-            @foreach(var mov in Model)
+            @foreach (var mov in Model)
             {
                 <tr>
                     <td>@mov.Id</td>
-                    <td>@mov.Name</td>
+                    <td>@Html.ActionLink(@mov.Name, "Details", new { id = @mov.Id }, null)</td>
+                    <td>@mov.Genre.Name</td>
                 </tr>
             }
         </tbody>
